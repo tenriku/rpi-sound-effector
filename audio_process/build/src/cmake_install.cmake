@@ -1,4 +1,4 @@
-# Install script for directory: /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src
+# Install script for directory: /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

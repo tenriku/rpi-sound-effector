@@ -1,5 +1,6 @@
 test/CMakeFiles/SharedAudioProcess.dir/main.cc.o: \
-  /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test/main.cc \
+  /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc \
+  /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.hh \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__config_site \
@@ -857,5 +858,5 @@ test/CMakeFiles/SharedAudioProcess.dir/main.cc.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__split_buffer \
   /usr/local/include/portaudio.h \
-  /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test/../include/basic.hh \
-  /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/include/_dsp.hh
+  /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/../include/basic.hh \
+  /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/include/_dsp.hh

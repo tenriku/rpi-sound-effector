@@ -53,10 +53,10 @@ RM = /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process
+CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build
+CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/dsp.dir/depend.make
@@ -70,32 +70,32 @@ include src/CMakeFiles/dsp.dir/progress.make
 include src/CMakeFiles/dsp.dir/flags.make
 
 src/CMakeFiles/dsp.dir/_dsp.cc.o: src/CMakeFiles/dsp.dir/flags.make
-src/CMakeFiles/dsp.dir/_dsp.cc.o: /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/_dsp.cc
+src/CMakeFiles/dsp.dir/_dsp.cc.o: /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/_dsp.cc
 src/CMakeFiles/dsp.dir/_dsp.cc.o: src/CMakeFiles/dsp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/dsp.dir/_dsp.cc.o"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/dsp.dir/_dsp.cc.o -MF CMakeFiles/dsp.dir/_dsp.cc.o.d -o CMakeFiles/dsp.dir/_dsp.cc.o -c /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/_dsp.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/dsp.dir/_dsp.cc.o"
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/dsp.dir/_dsp.cc.o -MF CMakeFiles/dsp.dir/_dsp.cc.o.d -o CMakeFiles/dsp.dir/_dsp.cc.o -c /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/_dsp.cc
 
 src/CMakeFiles/dsp.dir/_dsp.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dsp.dir/_dsp.cc.i"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/_dsp.cc > CMakeFiles/dsp.dir/_dsp.cc.i
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/_dsp.cc > CMakeFiles/dsp.dir/_dsp.cc.i
 
 src/CMakeFiles/dsp.dir/_dsp.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dsp.dir/_dsp.cc.s"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/_dsp.cc -o CMakeFiles/dsp.dir/_dsp.cc.s
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/_dsp.cc -o CMakeFiles/dsp.dir/_dsp.cc.s
 
 src/CMakeFiles/dsp.dir/basic.cc.o: src/CMakeFiles/dsp.dir/flags.make
-src/CMakeFiles/dsp.dir/basic.cc.o: /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/basic.cc
+src/CMakeFiles/dsp.dir/basic.cc.o: /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/basic.cc
 src/CMakeFiles/dsp.dir/basic.cc.o: src/CMakeFiles/dsp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/dsp.dir/basic.cc.o"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/dsp.dir/basic.cc.o -MF CMakeFiles/dsp.dir/basic.cc.o.d -o CMakeFiles/dsp.dir/basic.cc.o -c /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/basic.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/dsp.dir/basic.cc.o"
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/dsp.dir/basic.cc.o -MF CMakeFiles/dsp.dir/basic.cc.o.d -o CMakeFiles/dsp.dir/basic.cc.o -c /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/basic.cc
 
 src/CMakeFiles/dsp.dir/basic.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dsp.dir/basic.cc.i"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/basic.cc > CMakeFiles/dsp.dir/basic.cc.i
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/basic.cc > CMakeFiles/dsp.dir/basic.cc.i
 
 src/CMakeFiles/dsp.dir/basic.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dsp.dir/basic.cc.s"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/basic.cc -o CMakeFiles/dsp.dir/basic.cc.s
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/basic.cc -o CMakeFiles/dsp.dir/basic.cc.s
 
 # Object files for target dsp
 dsp_OBJECTS = \
@@ -109,18 +109,18 @@ lib/libdsp.dylib: src/CMakeFiles/dsp.dir/_dsp.cc.o
 lib/libdsp.dylib: src/CMakeFiles/dsp.dir/basic.cc.o
 lib/libdsp.dylib: src/CMakeFiles/dsp.dir/build.make
 lib/libdsp.dylib: src/CMakeFiles/dsp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library ../lib/libdsp.dylib"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dsp.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library ../lib/libdsp.dylib"
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dsp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/dsp.dir/build: lib/libdsp.dylib
 .PHONY : src/CMakeFiles/dsp.dir/build
 
 src/CMakeFiles/dsp.dir/clean:
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src && $(CMAKE_COMMAND) -P CMakeFiles/dsp.dir/cmake_clean.cmake
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src && $(CMAKE_COMMAND) -P CMakeFiles/dsp.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/dsp.dir/clean
 
 src/CMakeFiles/dsp.dir/depend:
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/src/CMakeFiles/dsp.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src/CMakeFiles/dsp.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/CMakeFiles/dsp.dir/depend
 

@@ -7,11 +7,11 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/CMakeLists.txt"
+  "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/CMakeLists.txt"
   "CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
-  "/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/CMakeLists.txt"
-  "/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test/CMakeLists.txt"
+  "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/CMakeLists.txt"
+  "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/CMakeLists.txt"
   "/opt/homebrew/Cellar/cmake/3.28.3/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/opt/homebrew/Cellar/cmake/3.28.3/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
   "/opt/homebrew/Cellar/cmake/3.28.3/share/cmake/Modules/CMakeGenericSystem.cmake"

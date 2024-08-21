@@ -41,6 +41,7 @@ public:
 class Gain : public DSP {
     float value;
 public:
+    Gain() {};
     Gain(const dsp_config &cfg, const float &value);
     void set(const dsp_config &cfg, ...) override;
     void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override;

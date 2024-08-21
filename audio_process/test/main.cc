@@ -1,104 +1,4 @@
-/*
- * 2024/08/10 updated.
- * coded by TEMMOTO Riku
- */
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include <iostream>
-// #include <thread>
-#include <vector>
-#include <portaudio.h>
-#include "../include/basic.hh"
-
-/* for voice processing */
-dsp_config cfg;
-float *in_buf;              // input buffer    
-float *out_buf;             // output buffer
-int t;                      // input time
-int to;                     // output time
-float *s;                   // will-be-proccesed data
-float *y;                   // already-proccesed data
-float *y_tmp;               // temporary already-proccesed
-bool is_applied;            // effects applied or not
-bool is_proc;               // proccessed or not
-
-/* invoke effectors */
-std::vector<DSP *> dsp;
-// BASIC::Through through;
-// BASIC::Delay delay(cfg, 20000);
-Gain gain(cfg, 10.0);
-// BASIC::IRconvol irconvol;
-// BASIC::ALLpass allpass(cfg, 0.8, 1e3);
-// BASIC::Notch notch(cfg, 0.8, 5e2);
-// BASIC::InvNotch invnotch(cfg, 0.9, 1e3);
-// FIR::LPF fir_lpf(cfg, 64, 4e3);
-// FIR::HPF fir_hpf(cfg, 64, 3e3);
-// FIR::BPF fir_bpf(cfg, 64, 1e3, 3e3);
-// FIR::BEF fir_bef(cfg, 64, 1e3, 3e3);
-// FIR::Echo fir_echo;
-// SPECTRUM::Through fft_through(cfg);
-// SPECTRUM::BPF fft_bpf(cfg, 100.0, 16000.0);
-// SPECTRUM::MAXfreq fft_max_freq(cfg);
-// VOICE::RingMod ringmod(cfg, 2.1);
-// VOICE::RingMod_Interpolation ringmod_interpolation(cfg, 2.7, 160);
-// VOICE::AMvoiceChanger am_voice_changer(cfg, 1e3);
-// VOICE::TVAMvoiceChanger tvam_voice_changer(cfg, 1e3);
-// EFFECT::Echo delay_echo(cfg, 4000, 12, 0.7);
-// EFFECT::Reverb reverb(cfg, 4000, 0.7);
-// EFFECT::Compressor compressor(cfg, 0.2, 0.1);
-
-/* for portaudio */
-PaStreamParameters inputParameters, outputParameters;
-PaStream *stream;
-const PaDeviceInfo *inputInfo;
-const PaDeviceInfo *outputInfo;
-
-/* voice processing functions */
-extern "C" int proc_initialize();
-
-extern "C" int proc_terminate();
-
-extern "C" void proc_loop();
-
-extern "C" void proc_error(int err);
-
-int main() {
-    // std::thread audio(proc_loop);
-
-    /* set effectors */
-    // ゆくゆくはプリセット保存用ファイルを作って、そこからエフェクタのセットをする。
-    // dsp.push_back(&through);
-    // dsp.push_back(&delay);
-    dsp.push_back(&gain);
-    // dsp.push_back(&irconvol);
-    // dsp.push_back(&allpass);
-    // dsp.push_back(&notch);
-    // dsp.push_back(&invnotch);
-    // dsp.push_back(&fir_lpf);
-    // dsp.push_back(&fir_hpf);
-    // dsp.push_back(&fir_bpf);
-    // dsp.push_back(&fir_bef);
-    // dsp.push_back(&fir_echo);
-    // dsp.push_back(&fft_through);
-    // dsp.push_back(&fft_bpf);
-    // dsp.push_back(&fft_max_freq);
-    // dsp.push_back(&ringmod);
-    // dsp.push_back(&ringmod_interpolation);
-    // dsp.push_back(&am_voice_changer);
-    // dsp.push_back(&tvam_voice_changer);
-    // dsp.push_back(&delay_echo);
-    // dsp.push_back(&reverb);
-    // dsp.push_back(&compressor);
-
-    proc_loop();
-
-    sleep(5);
-    is_proc = false;
-
-    return EXIT_SUCCESS;
-}
+#include "main.hh"
 
 int proc_initialize() {
     cfg.MEM_SIZE = 400;
@@ -266,3 +166,18 @@ error:
     fprintf(stderr, "Error message: %s\n", Pa_GetErrorText(err));
     exit(EXIT_FAILURE);
 };
+
+int main() {
+    /* set effectors */
+    // ゆくゆくはプリセット保存用ファイルを作って、そこからエフェクタのセットをする。
+    gain.set(cfg, 10.0);
+    dsp.push_back(&gain);
+
+    proc_loop();
+
+    return EXIT_SUCCESS;
+}
+
+void stop_proc() {
+    is_proc = false;
+}

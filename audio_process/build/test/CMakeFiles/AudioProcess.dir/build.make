@@ -53,10 +53,10 @@ RM = /opt/homebrew/Cellar/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process
+CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build
+CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build
 
 # Include any dependencies generated for this target.
 include test/CMakeFiles/AudioProcess.dir/depend.make
@@ -70,18 +70,18 @@ include test/CMakeFiles/AudioProcess.dir/progress.make
 include test/CMakeFiles/AudioProcess.dir/flags.make
 
 test/CMakeFiles/AudioProcess.dir/main.cc.o: test/CMakeFiles/AudioProcess.dir/flags.make
-test/CMakeFiles/AudioProcess.dir/main.cc.o: /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test/main.cc
+test/CMakeFiles/AudioProcess.dir/main.cc.o: /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc
 test/CMakeFiles/AudioProcess.dir/main.cc.o: test/CMakeFiles/AudioProcess.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object test/CMakeFiles/AudioProcess.dir/main.cc.o"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/test && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT test/CMakeFiles/AudioProcess.dir/main.cc.o -MF CMakeFiles/AudioProcess.dir/main.cc.o.d -o CMakeFiles/AudioProcess.dir/main.cc.o -c /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test/main.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object test/CMakeFiles/AudioProcess.dir/main.cc.o"
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/test && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT test/CMakeFiles/AudioProcess.dir/main.cc.o -MF CMakeFiles/AudioProcess.dir/main.cc.o.d -o CMakeFiles/AudioProcess.dir/main.cc.o -c /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc
 
 test/CMakeFiles/AudioProcess.dir/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/AudioProcess.dir/main.cc.i"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/test && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test/main.cc > CMakeFiles/AudioProcess.dir/main.cc.i
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/test && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc > CMakeFiles/AudioProcess.dir/main.cc.i
 
 test/CMakeFiles/AudioProcess.dir/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/AudioProcess.dir/main.cc.s"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/test && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test/main.cc -o CMakeFiles/AudioProcess.dir/main.cc.s
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/test && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc -o CMakeFiles/AudioProcess.dir/main.cc.s
 
 # Object files for target AudioProcess
 AudioProcess_OBJECTS = \
@@ -95,18 +95,18 @@ bin/AudioProcess: test/CMakeFiles/AudioProcess.dir/build.make
 bin/AudioProcess: lib/libdsp.dylib
 bin/AudioProcess: /usr/local/lib/libportaudio.dylib
 bin/AudioProcess: test/CMakeFiles/AudioProcess.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../bin/AudioProcess"
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AudioProcess.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../bin/AudioProcess"
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AudioProcess.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 test/CMakeFiles/AudioProcess.dir/build: bin/AudioProcess
 .PHONY : test/CMakeFiles/AudioProcess.dir/build
 
 test/CMakeFiles/AudioProcess.dir/clean:
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/test && $(CMAKE_COMMAND) -P CMakeFiles/AudioProcess.dir/cmake_clean.cmake
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/test && $(CMAKE_COMMAND) -P CMakeFiles/AudioProcess.dir/cmake_clean.cmake
 .PHONY : test/CMakeFiles/AudioProcess.dir/clean
 
 test/CMakeFiles/AudioProcess.dir/depend:
-	cd /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/test /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/test /Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/build/test/CMakeFiles/AudioProcess.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/test /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/test/CMakeFiles/AudioProcess.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : test/CMakeFiles/AudioProcess.dir/depend
 

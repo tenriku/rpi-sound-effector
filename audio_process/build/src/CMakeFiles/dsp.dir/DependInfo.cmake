@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/_dsp.cc" "src/CMakeFiles/dsp.dir/_dsp.cc.o" "gcc" "src/CMakeFiles/dsp.dir/_dsp.cc.o.d"
-  "/Users/tenriku/Documents/GitHub/rpi-zero-multi-effector/audio_process/src/basic.cc" "src/CMakeFiles/dsp.dir/basic.cc.o" "gcc" "src/CMakeFiles/dsp.dir/basic.cc.o.d"
+  "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/_dsp.cc" "src/CMakeFiles/dsp.dir/_dsp.cc.o" "gcc" "src/CMakeFiles/dsp.dir/_dsp.cc.o.d"
+  "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/basic.cc" "src/CMakeFiles/dsp.dir/basic.cc.o" "gcc" "src/CMakeFiles/dsp.dir/basic.cc.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

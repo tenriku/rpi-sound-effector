@@ -10,3 +10,4 @@ https://willfrank.co.uk/port-audio-1.html
 https://www.portaudio.com/docs/v19-doxydocs/index.html
 https://arthursonzogni.github.io/FTXUI/index.html
 https://qiita.com/shohirose/items/45fb49c6b429e8b204ac
+https://qiita.com/Toyo_m/items/992b0dcf765ad3082d0b
