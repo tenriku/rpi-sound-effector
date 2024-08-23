@@ -1,51 +1,37 @@
 #ifndef __BASIC_HH__
 #define __BASIC_HH__
 
-#include "_dsp.hh"
+#include "config.hh"
 
 /*
-class LineIn : public DSP {};
-class LineOut : public DSP {};
+class LineIn : public Effector {};
+class LineOut : public Effector {};
+*/
 
-class Through : public DSP {
+class Through : public Effector {
 public:
-    void set(const dsp_config &cfg, ...) override {}
-
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        y[t] = s[t];
-    }
+    Through();
+    void set(const dsp_config *cfg, ...) override;
+    void apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) override;
 };
 
-class Delay : public DSP {
+class DigitalDelay : public Effector {
     int t_Delay;
     int L;
-
 public:
-    Delay(const dsp_config &cfg, const int &L) {
-        set(cfg, L);
-    }
-    
-    void set(const dsp_config &cfg, ...) override {
-        va_list ap;
-        va_start(ap, cfg);
-        L = va_arg(ap, int);
-        va_end(ap);
-    }
-
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        t_Delay = (t-L+cfg.MEM_SIZE)%cfg.MEM_SIZE;
-        y[t] = s[t_Delay];
-    }
+    DigitalDelay();
+    void set(const dsp_config *cfg, ...) override;
+    void apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) override;
 };
-*/
-class Gain : public DSP {
+
+class Gain : public Effector {
     float value;
 public:
-    Gain() {};
-    Gain(const dsp_config &cfg, const float &value);
-    void set(const dsp_config &cfg, ...) override;
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override;
+    Gain();
+    void set(const dsp_config *cfg, ...) override;
+    void apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) override;
 };
+
 /*
 // 未実装
 class IRconvol : public DSP {

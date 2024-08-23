@@ -1,6 +1,7 @@
-src/CMakeFiles/dsp.dir/_dsp.cc.o: \
-  /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/_dsp.cc \
-  /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/../include/_dsp.hh \
+src/CMakeFiles/config.dir/basic.cc.o: \
+  /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/src/basic.cc \
+  /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/src/../include/basic.hh \
+  /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/include/config.hh \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__config_site \

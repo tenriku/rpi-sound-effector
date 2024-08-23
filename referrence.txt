@@ -1,13 +1,62 @@
-https://youtu.be/jpsJCji71Ec?si=YRKyEsciJVnVA2xr
-http://bfin.sakura.ne.jp/?p=1765
-http://ddddakyl.blogspot.com/2017/03/macportaudio.html
-https://zenn.dev/kojiban_cpp/articles/660ef6893cc762
-http://marchan.e5.valueserver.jp/cabin/comp/jbox/arc300/index300.html
-https://zenn.dev/melos/articles/a7262ffce8126d
-https://youtu.be/KciKqGX8g94?si=AuibY4NT32H9Vj7f
-https://zenn.dev/taniiicom/articles/cpp-react-tui-ftxui
-https://willfrank.co.uk/port-audio-1.html
-https://www.portaudio.com/docs/v19-doxydocs/index.html
-https://arthursonzogni.github.io/FTXUI/index.html
-https://qiita.com/shohirose/items/45fb49c6b429e8b204ac
-https://qiita.com/Toyo_m/items/992b0dcf765ad3082d0b
+Capture Audio in C++ (Linux, PortAudio)
+    https://youtu.be/jpsJCji71Ec?si=YRKyEsciJVnVA2xr
+
+PortAudioをUbuntu 20.04 LTSで試す
+    http://bfin.sakura.ne.jp/?p=1765
+
+MacでのPortAudio【2019/07/22追記】
+    http://ddddakyl.blogspot.com/2017/03/macportaudio.html
+
+【c++】テンプレートの基本解説1【初心者向け】
+    https://zenn.dev/kojiban_cpp/articles/660ef6893cc762
+
+Raspberry Piによる音声信号処理と聴覚補助ツールの製作
+    http://marchan.e5.valueserver.jp/cabin/comp/jbox/arc300/index300.html
+
+[C++]可変長引数の使い方を理解する
+    https://zenn.dev/melos/articles/a7262ffce8126d
+
+60fps on an SPI display using the Raspberry Pi and fbcp-ili9341 (includes fix for 320x240 ST7789)
+    https://youtu.be/KciKqGX8g94?si=AuibY4NT32H9Vj7f
+
+Build and Use PortAudio on Linux (using CMake)
+    https://willfrank.co.uk/port-audio-1.html
+
+PortAudio Documentation
+    https://www.portaudio.com/docs/v19-doxydocs/index.html
+    
+CMakeの使い方（その１）
+    https://qiita.com/shohirose/items/45fb49c6b429e8b204ac
+
+その並列処理待った！　「Python 並列処理」でググったあなたに捧ぐasync, threading, multiprocessingのざっくりとした説明
+    https://qiita.com/Toyo_m/items/992b0dcf765ad3082d0b
+
+スライダー (Slider) 〜 Kivy
+    https://bitwalk.blogspot.com/2022/07/slider-kivy.html
+
+[Python]pythonからcの関数を呼び出す方法(ctypes編)
+    https://qiita.com/supersaiakujin/items/ebc093dd04fe2b49517e
+
+Python Kivyの使い方① ～Kv Languageの基本～
+    https://qiita.com/dario_okazaki/items/7892b24fcfa787faface
+
+Kivyでの画面遷移（Screen Managerの使い方）について
+    http://independence-sys.net/main/?p=6829
+
+Python Kivyの使い方②　～電卓を作成する～
+    https://qiita.com/dario_okazaki/items/910abf09344a60dd7823
+
+[C++]その仮想関数、本当に必要？
+    https://qiita.com/Kogia_sima/items/6de2bb4423b5eb93639b
+
+C++テンプレートことはじめ
+    https://qiita.com/a-beco/items/7709ab80a05ea2d09ea8
+
+【C言語】Linuxでのkbhit関数（キーイベントの取得）
+    https://hotnews8.net/programming/tricky-code/c-code03#google_vignette
+
+C++ std::threadの使い方
+    https://zenn.dev/hidenori3/articles/4e03d62c5e7679
+
+C++初心者必見！std::cinの使い方を5選で徹底解説
+    https://jp-seemore.com/iot/23498/

@@ -1,12 +1,32 @@
 #include "main.hh"
 
-int proc_initialize() {
+using namespace std;
+
+void dsp_loop() {
+    /* load config */
+    // ゆくゆくは保存用ファイルを作って、そこから各データのセットをする。
+    volume.set(&cfg, 1.0);
+    volume.enable();
+
+    through.set(&cfg);
+    through.enable();
+    effectors.push_back(&through);
+
+    digital_delay.set(&cfg, 0);
+    digital_delay.enable();
+    effectors.push_back(&digital_delay);
+
+    gain.set(&cfg, 1.0);
+    gain.enable();
+    effectors.push_back(&gain);
+
     cfg.MEM_SIZE = 400;
     cfg.Fs = 48000;
     cfg.BUF_SIZE = 160;
     cfg.FFT_SIZE = 64;
     cfg.OL = 8;
 
+    /* initialize variables and pa_stream */
     in_buf = new float[cfg.BUF_SIZE];
     out_buf = new float[cfg.BUF_SIZE];
 
@@ -15,10 +35,9 @@ int proc_initialize() {
     s = new float[cfg.MEM_SIZE];
     y = new float[cfg.MEM_SIZE];
     y_tmp = new float[cfg.MEM_SIZE];
-    is_applied = false;
 
     int err = Pa_Initialize();
-    if(err != paNoError) return -1;
+    if(err != paNoError) goto error;
 
     inputParameters.device = Pa_GetDefaultInputDevice();
     printf("Input device # %d.\n", inputParameters.device);
@@ -52,67 +71,43 @@ int proc_initialize() {
         NULL,
         NULL
     );
-    if(err != paNoError) return -1;
+    if(err != paNoError) goto error;
 
     err = Pa_StartStream(stream);
-    if(err != paNoError) return -1;
+    if(err != paNoError) goto error;
 
-    return 0;
-}
-
-int proc_terminate() {
-    int err = Pa_StopStream(stream);
-    if(err != paNoError) return -1;
-    Pa_Terminate();
-    delete[] s;
-    delete[] y;
-    delete[] y_tmp;
-    delete[] in_buf;
-    delete[] out_buf;
-
-    return 0;
-}
-
-void proc_loop() {
-    std::size_t num_dsp;
-
-    int err = proc_initialize();
-    proc_error(err);
-    
-    is_proc = true;
-    while(is_proc) {
+    /* loop pa_stream */
+    processing = true;
+    while(processing) {
         /* input processing */
         err = Pa_ReadStream(stream, in_buf, cfg.BUF_SIZE);
-        if(err) proc_error(-2);
+        if(err) goto xrun;
 
         for(int n = 0; n < cfg.BUF_SIZE; ++n) {
             t = (t+1) % cfg.MEM_SIZE;
             s[t] = in_buf[n];
-            // s[ti] += 0.1*sin(2*M_PI*1e3/Fs*ti);
+            // s[t] += 0.1*sin(2*M_PI*1e3/cfg.Fs*t);
+            y[t] = s[t];
             
-            if(!is_applied) {
-                y[t] = s[t];
-            } else {
-
-                /* voice processing */
-                num_dsp = dsp.size();
-                if(num_dsp != 0 && num_dsp % 2 == 0) {
-                    dsp.front()->apply(cfg, t, s, y_tmp);
-                    for(int i = 1; i < num_dsp - 1; i += 2) {
-                        dsp.at(i)->apply(cfg, t, y_tmp, y);
-                        dsp.at(i+1)->apply(cfg, t, y, y_tmp);
-                    }
-                    dsp.back()->apply(cfg, t, y_tmp, y);
+            /* voice processing */
+            static size_t num_dsp = effectors.size();
+            if(num_dsp != 0 && num_dsp % 2 == 0) {
+                effectors.front()->apply(&cfg, t, s, y_tmp);
+                for(int i = 1; i < num_dsp - 1; i += 2) {
+                    effectors.at(i)->apply(&cfg, t, y_tmp, y);
+                    effectors.at(i+1)->apply(&cfg, t, y, y_tmp);
                 }
-                else if(num_dsp % 2 == 1) {
-                    dsp.front()->apply(cfg, t, s, y);
-                    for(int i = 1; i < num_dsp; i += 2) {
-                        dsp.at(i)->apply(cfg, t, y, y_tmp);
-                        dsp.at(i+1)->apply(cfg, t, y_tmp, y);
-                    }
-                }
-                y[t] = atan(y[t])/(M_PI/2.0);
+                effectors.back()->apply(&cfg, t, y_tmp, y);
             }
+            else if(num_dsp % 2 == 1) {
+                effectors.front()->apply(&cfg, t, s, y);
+                for(int i = 1; i < num_dsp; i += 2) {
+                    effectors.at(i)->apply(&cfg, t, y, y_tmp);
+                    effectors.at(i+1)->apply(&cfg, t, y_tmp, y);
+                }
+            }
+            y[t] = atan(y[t])/(M_PI/2.0);
+            volume.apply(&cfg, t, y, y);
         }
 
         /* output processing */
@@ -122,19 +117,24 @@ void proc_loop() {
         }
 
         err = Pa_WriteStream(stream, out_buf, cfg.BUF_SIZE);
-        if(err) proc_error(-2);
+        if(err) goto xrun;
     }
 
-    err = proc_terminate();
-    proc_error(err);
-}
+    /* finalize variables and pa_stream */
+    err = Pa_StopStream(stream);
+    if(err != paNoError) goto error;
+    Pa_Terminate();
+    delete[] s;
+    delete[] y;
+    delete[] y_tmp;
+    delete[] in_buf;
+    delete[] out_buf;
 
-void proc_error(int err) {
-    if(err == -2)      goto xrun;
-    else if(err == -1) goto error;
-    else               return;
+    exit(EXIT_SUCCESS);
+
 xrun:
-    printf("err = %d\n", err); fflush(stdout);
+    printf("err = %d\n", err);
+    fflush(stdout);
     if(stream) {
         Pa_AbortStream(stream);
         Pa_CloseStream(stream);
@@ -165,19 +165,54 @@ error:
     fprintf(stderr, "Error number: %d\n", err);
     fprintf(stderr, "Error message: %s\n", Pa_GetErrorText(err));
     exit(EXIT_FAILURE);
-};
-
-int main() {
-    /* set effectors */
-    // ゆくゆくはプリセット保存用ファイルを作って、そこからエフェクタのセットをする。
-    gain.set(cfg, 10.0);
-    dsp.push_back(&gain);
-
-    proc_loop();
-
-    return EXIT_SUCCESS;
 }
 
-void stop_proc() {
-    is_proc = false;
+int main() {
+    thread th(dsp_loop);
+
+    while(!processing);     // wait until processing is triggerd.
+    while(processing) {
+        static string cmd, effector_name;
+
+        cout << "cmmand here: ";
+        getline(cin, cmd);
+
+        stringstream ss(cmd);
+        getline(ss, effector_name, ',');
+
+    if(tag == "FIN") {
+        cin.clear();
+        processing = false;
+    } else if(tag == "A00") {
+        if(ope == "+") {
+            through.enable();
+            cout << "through is enabled." << endl;
+        } else if(ope == "-") {
+            through.disable();
+            cout << "through is disabled." << endl;
+        } else {
+            through.set(cfg);
+            cout << "through is newly set." << endl;
+        } cin.clear();
+    } else if(tag == "A01") {
+        if(ope == "+") {
+            digital_delay.enable();
+            cout << "digital_delay is enabled." << endl;
+        } else if(ope == "-") {
+            digital_delay.disable();
+            cout << "digital_delay is disabled." << endl;
+        } else {
+            int argc = stoi(ope);
+            digital_delay.set(cfg);
+            cout << "digital_delay is newly set." << endl;
+        } cin.clear();
+    } else if(tag == "A02") {
+        //
+    } else {
+        cin.clear();   
+        cout << "ERROR: no effector tagged \"" << tag  << "\"." << endl;
+    }
+    }
+
+    th.join();
 }

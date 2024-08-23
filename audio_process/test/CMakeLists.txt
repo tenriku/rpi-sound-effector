@@ -4,8 +4,8 @@ target_include_directories(AudioProcess
     main.hh
 )
 target_link_libraries(AudioProcess
-  PRIVATE
-    dsp
+  PUBLIC
+    config
 )
 
 add_library(SharedAudioProcess
@@ -17,6 +17,6 @@ target_include_directories(SharedAudioProcess
     main.hh
 )
 target_link_libraries(SharedAudioProcess
-  PRIVATE
-    dsp
+  PUBLIC
+    config
 )

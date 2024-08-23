@@ -1,51 +1,39 @@
 #include "../include/basic.hh"
 
-/*
-class Through : public DSP {
-public:
-    void set(const dsp_config &cfg, ...) override {}
-
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        y[t] = s[t];
-    }
-};
-
-class Delay : public DSP {
-    int t_Delay;
-    int L;
-
-public:
-    Delay(const dsp_config &cfg, const int &L) {
-        set(cfg, L);
-    }
-    
-    void set(const dsp_config &cfg, ...) override {
-        va_list ap;
-        va_start(ap, cfg);
-        L = va_arg(ap, int);
-        va_end(ap);
-    }
-
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        t_Delay = (t-L+cfg.MEM_SIZE)%cfg.MEM_SIZE;
-        y[t] = s[t_Delay];
-    }
-};
-*/
-Gain::Gain(const dsp_config &cfg, const float &value) {
-    set(cfg, value);
+Through::Through() {}
+void Through::set(const dsp_config *cfg, ...) {}
+void Through::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
+    y[t] = s[t];
 }
 
-void Gain::set(const dsp_config &cfg, ...) {
+DigitalDelay::DigitalDelay() {}
+void DigitalDelay::set(const dsp_config *cfg, ...) {
     va_list ap;
     va_start(ap, cfg);
-    value = va_arg(ap, double);
+    this->L = va_arg(ap, int);
     va_end(ap);
 }
-
-void Gain::apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) {
-    y[t] = value * s[t];
+void DigitalDelay::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
+    if(this->is_enable) {
+        this->t_Delay = (t-this->L+cfg->MEM_SIZE)%cfg->MEM_SIZE;
+        y[t] = s[this->t_Delay];
+    } else {
+        y[t] = s[t];
+    }
 }
+
+Gain::Gain() {}
+void Gain::set(const dsp_config *cfg, ...) {
+    va_list ap;
+    va_start(ap, cfg);
+    this->value = va_arg(ap, double);
+    va_end(ap);
+}
+void Gain::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
+    if(is_enable) y[t] = this->value * s[t];
+    else          y[t] = s[t];
+}
+
 /*
 // 未実装
 class IRconvol : public DSP {

@@ -1,4 +1,10 @@
-#include "../include/_dsp.hh"
+#include "../include/config.hh"
+
+Effector::Effector() : is_enable(false) {}
+void Effector::enable() { this->is_enable = true; }
+void Effector::disable() { this->is_enable = false; }
+void Effector::set(const dsp_config *cfg, ...) {};
+void Effector::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {};
 
 unsigned FFT::FFT_SIZE = 0;
 float * FFT::Wr = NULL;

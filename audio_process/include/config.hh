@@ -1,23 +1,25 @@
-#ifndef __DSP_HH__
-#define __DSP_HH__
+#ifndef __CONFIG_HH__
+#define __CONFIG_HH__
 
 #include <stdio.h>
 #include <stdarg.h>
 #include <math.h>
 
-typedef struct {
+struct dsp_config {
     unsigned MEM_SIZE;          // 音声メモリのサイズ
     unsigned Fs;                // リアルタイム処理のサンプリング周波数
     unsigned BUF_SIZE;          // 各バッファのサイズ
     unsigned FFT_SIZE;          // FFT点数
     unsigned OL;                // フレームシフト ＝ FFT_SIZE / OL
-} dsp_config;
+};
 
-class DSP {
-    bool enable;
-public:
-    virtual void set(const dsp_config &cfg, ...) {};
-    virtual void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) {};
+struct Effector {
+    bool is_enable;
+    Effector();
+    void enable();
+    void disable();
+    virtual void set(const dsp_config *cfg, ...);
+    virtual void apply(const dsp_config *cfg, const unsigned &t, float *s, float *y);
 };
 
 class FFT final {

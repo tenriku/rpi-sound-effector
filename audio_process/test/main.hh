@@ -6,12 +6,10 @@
 #ifndef __MAIN_HH__
 #define __MAIN_HH__
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
 #include <iostream>
+#include <string>
 #include <vector>
+#include <thread>
 #include <portaudio.h>
 #include "../include/basic.hh"
 
@@ -24,11 +22,13 @@ int to;                     // output time
 float *s;                   // will-be-proccesed data
 float *y;                   // already-proccesed data
 float *y_tmp;               // temporary already-proccesed
-bool is_applied;            // effects applied or not
-bool is_proc;               // proccessed or not
+bool processing;               // proccessed or not
 
 /* invoke effectors */
-std::vector<DSP *> dsp;
+std::vector<Effector *> effectors;
+Gain volume;                // master-volume
+Through through;
+DigitalDelay digital_delay;
 Gain gain;
 
 /* for portaudio */
@@ -37,17 +37,8 @@ PaStream *stream;
 const PaDeviceInfo *inputInfo;
 const PaDeviceInfo *outputInfo;
 
-/* voice processing functions */
-extern "C" int proc_initialize();
-
-extern "C" int proc_terminate();
-
-extern "C" void proc_loop();
-
-extern "C" void proc_error(int err);
+void dsp_loop();
 
 extern "C" int main();
-
-extern "C" void stop_proc();
 
 #endif
