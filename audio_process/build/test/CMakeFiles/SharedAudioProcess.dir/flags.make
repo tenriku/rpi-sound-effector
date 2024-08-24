@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = -DSharedAudioProcess_EXPORTS
 
-CXX_INCLUDES = -I/Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/test/main.hh -I/Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/include -isystem /usr/local/include
+CXX_INCLUDES = -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.hh -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/include -isystem /usr/local/include
 
 CXX_FLAGSarm64 = -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fPIC -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks 
 

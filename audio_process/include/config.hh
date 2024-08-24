@@ -2,8 +2,8 @@
 #define __CONFIG_HH__
 
 #include <stdio.h>
-#include <stdarg.h>
 #include <math.h>
+#include <vector>
 
 struct dsp_config {
     unsigned MEM_SIZE;          // 音声メモリのサイズ
@@ -14,11 +14,10 @@ struct dsp_config {
 };
 
 struct Effector {
-    bool is_enable;
+    bool is_enabled;
     Effector();
-    void enable();
-    void disable();
-    virtual void set(const dsp_config *cfg, ...);
+    bool toggle();
+    virtual void set(const dsp_config *cfg, const std::vector<float>::iterator &it);
     virtual void apply(const dsp_config *cfg, const unsigned &t, float *s, float *y);
 };
 

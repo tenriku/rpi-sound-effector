@@ -31,9 +31,6 @@
             id: sm
 
             GainMenu:
-                id: gain_menu
-            EffectMenu:
-                id: effect_menu
             
         BoxLayout:
             size_hint_y: 0.1
@@ -42,61 +39,54 @@
 
             Button:
                 size_hint_x: 0.1
-                id: to_left
                 text: '<<'
                 font_size: 80
                 background_color: get_color_from_hex('#f0f0f0')
+                # disabled: True
                 on_press:
-                    root.ids['effect_menu'].left_screen()
+                    root.to_left_screen()
                     sm.transition = SlideTransition(direction = 'right')
-                    sm.current = '_effect_menu_'
+                    sm.current = root.left_screen
 
             ActionButton:
                 size_hint_x: 0.1
-                id: volume
                 icon: root.volume_icon
                 font_size: 40
         
             Slider:
                 orientation: 'horizontal'
-                id: sld
                 min: 0.00
                 max: 1.00
                 step: 0.01
                 value: 1.0
-                on_touch_down: root.volume_move(self)
-                on_touch_move: root.volume_move(self)
-                on_touch_up: root.volume_move(self)
+                on_touch_down: root.volume_sld(self)
+                on_touch_move: root.volume_sld(self)
+                on_touch_up: root.volume_sld(self)
 
             Button:
                 size_hint_x: 0.1
-                id: to_right
                 text: '>>'
                 font_size: 80
                 background_color: get_color_from_hex('#f0f0f0')
-                disabled: True
+                # disabled: True
                 on_press:
-                    root.ids['effect_menu'].right_screen()
+                    root.to_right_screen()
                     sm.transition = SlideTransition(direction = 'left')
-                    sm.current = '_effect_menu_'
-
-<EffectMenu>:
-    name: '_effect_menu_'
-
-    Label:
-        text: root.effector_now
-        font_size: 80
-        background_color: get_color_from_hex(root.background_color)
+                    sm.current = root.right_screen
 
 <GainMenu>:
+    name: 'Gain'
+
     BoxLayout:
         orientation: 'vertical'
         size: root.size
 
-        Label:
+        Button:
             size_hint_y: 0.2
-            text: 'Gain'
+            text: '[*]Gain' if root.is_enable else '[ ]Gain'
             font_size: 60
+            background_color: get_color_from_hex(root.background_color)
+            on_press: root.toggle()
         
         Slider:
             size_hint_y: 0.7
@@ -114,58 +104,3 @@
             size_hint_y: 0.1
             text: str(sld.value)
             font_size: 40
-        
-# MenuWidget:
-
-# <MenuWidget>:
-#     BoxLayout:
-#         orientation: 'horizontal'
-#         size: root.size
-#         padding: 80, 40, 80, 40
-
-#         Button:
-#             size_hint_x: 0.15
-#             id: btn_left
-#             text: root.txt_left
-#             font_size: 80
-#             on_press: root.btn_left()
-
-#         BoxLayout:
-#             size_hint_x: 0.70
-#             orientation: 'vertical'
-#             size: root.size
-#             padding: 10, 0, 10, 0
-    
-#             Button:
-#                 size_hint_y: 0.1
-#                 id: btn_up
-#                 text: root.txt_up
-#                 font_size: 80
-#                 on_press: root.btn_up()
-
-            # Slider:
-            #     orientation: 'vertical'
-                # size_hint_y: 0.8
-                # id: sld
-                # min: 0
-                # max: 100
-                # step: 1
-                # value: 1
-                # on_touch_down: root.on_slider_move(self, self.value)
-                # on_touch_move: root.on_slider_move(self, self.value)
-                # on_touch_up: root.on_slider_move(self, self.value)
-
-#             Button:
-#                 size_hint_y: 0.1
-#                 id: btn_down
-#                 text: root.txt_down
-#                 font_size: 80
-#                 on_press: root.btn_down()
-
-#         Button:
-#             size_hint_x: 0.15
-#             id: btn_right
-#             text: root.txt_right
-#             font_size: 80
-#             on_press: root.btn_right()
-    

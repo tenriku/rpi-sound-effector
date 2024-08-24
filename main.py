@@ -1,7 +1,7 @@
+from kivy.uix.accordion import BooleanProperty
 # for audio_process
-from ctypes import cdll, c_float
+import ctypes
 import threading
-import subprocess
 
 # for kivy-GUI
 from kivy.app import App
@@ -9,18 +9,26 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import Screen
-from kivy.properties import StringProperty, NumericProperty
+from kivy.properties import StringProperty, NumericProperty, BooleanProperty
 
 ''' !CAUTION! .dylib on MacOS, .so in Linux, .dll on Windows '''
-audio_process = cdll.LoadLibrary("./audio_process/build/lib/libSharedAudioProcess.dylib")
+audio_process = ctypes.cdll.LoadLibrary("./audio_process/build/lib/libSharedAudioProcess.dylib")
+
+def set_command(cmd):
+    cmd = cmd.encode('utf-8')
+    cmd = ctypes.create_string_buffer(cmd)
+    audio_process.set_command(cmd)
 
 class Home(Widget):
     volume_icon = StringProperty('atlas://data/images/defaulttheme/audio-volume-high')
     volume_value = NumericProperty(1.0)
+    background_color = StringProperty('#000000')
+    left_screen = StringProperty('Gain')
+    right_screen = StringProperty('Gain')
     
-    def volume_move(self, instance):
+    def volume_sld(self, instance):
         self.volume_value = instance.value
-        # audio_process.volume_set(c_float(self.volume_value))
+        set_command(f'Volume,^,{self.volume_value}')
         
         if(self.volume_value == 0.0):
             self.volume_icon = 'atlas://data/images/defaulttheme/audio-volume-muted'
@@ -29,28 +37,22 @@ class Home(Widget):
         else:
             self.volume_icon = 'atlas://data/images/defaulttheme/audio-volume-high'
 
-class EffectMenu(Screen):
-    effector_now = StringProperty('[EMPTY]')
-    background_color = StringProperty('#000000')
-    pos_now = 0
-    dsp = []
-    
-    def left_screen(self):
-        self.pos_now += 1
-        # if self.pos_now > self.dsp.len() - 1:
-        #     self.effector_now = dsp[self.pos_now]
-        # else:
-        #     self.effector_now = '[EMPTY]'
+    def to_left_screen(self):
+        pass
         
-    def right_screen(self):
-        self.pos_now -= 1
+    def to_right_screen(self):
+        pass
 
 class GainMenu(Screen):
+    background_color = StringProperty('#000000')
+    is_enable = BooleanProperty(True)
+    
+    def toggle(self):
+        self.is_enable = (False if self.is_enable else True)
+        set_command(f'Gain,|')
+    
     def sld(self, instance):
-        pass
-        # audio_process.gain_set(c_float(instance.value))]
-        # terminalに打つ
-        
+        set_command(f'Gain,^,{instance.value}')
         
 class MainApp(App):
     def __init__(self, **kwargs):
@@ -69,5 +71,5 @@ if __name__ == "__main__":
     MainApp().run()
     
     # stop audio_process
-    audio_process.finish()
+    set_command('FIN')
     dsp.join()

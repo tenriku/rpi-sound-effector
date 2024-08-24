@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -dynamiclib -Wl,-headerpad_max_install_names -o ../lib/libconfig.dylib -install_name @rpath/libconfig.dylib CMakeFiles/config.dir/config.cc.o CMakeFiles/config.dir/basic.cc.o

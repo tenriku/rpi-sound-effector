@@ -44,7 +44,13 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "__hash_table": "cpp",
+        "__node_handle": "cpp",
+        "charconv": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "optional": "cpp"
     },
-    "cmake.sourceDirectory": "/Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process"
+    "cmake.sourceDirectory": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process"
 }

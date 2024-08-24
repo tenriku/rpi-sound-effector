@@ -54,10 +54,10 @@ RM = /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process
+CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build
+CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -116,14 +116,14 @@ test/clean: test/CMakeFiles/SharedAudioProcess.dir/clean
 src/CMakeFiles/config.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles --progress-num=5,6,7 "Built target config"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=5,6,7 "Built target config"
 .PHONY : src/CMakeFiles/config.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/config.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/config.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/config.dir/rule
 
 # Convenience name for target.
@@ -142,14 +142,14 @@ src/CMakeFiles/config.dir/clean:
 test/CMakeFiles/AudioProcess.dir/all: src/CMakeFiles/config.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/AudioProcess.dir/build.make test/CMakeFiles/AudioProcess.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/AudioProcess.dir/build.make test/CMakeFiles/AudioProcess.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles --progress-num=1,2 "Built target AudioProcess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=1,2 "Built target AudioProcess"
 .PHONY : test/CMakeFiles/AudioProcess.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/AudioProcess.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/AudioProcess.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/AudioProcess.dir/rule
 
 # Convenience name for target.
@@ -168,14 +168,14 @@ test/CMakeFiles/AudioProcess.dir/clean:
 test/CMakeFiles/SharedAudioProcess.dir/all: src/CMakeFiles/config.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/SharedAudioProcess.dir/build.make test/CMakeFiles/SharedAudioProcess.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/SharedAudioProcess.dir/build.make test/CMakeFiles/SharedAudioProcess.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles --progress-num=3,4 "Built target SharedAudioProcess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles --progress-num=3,4 "Built target SharedAudioProcess"
 .PHONY : test/CMakeFiles/SharedAudioProcess.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/SharedAudioProcess.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/SharedAudioProcess.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/SharedAudioProcess.dir/rule
 
 # Convenience name for target.

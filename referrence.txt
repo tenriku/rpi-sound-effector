@@ -60,3 +60,12 @@ C++ std::threadの使い方
 
 C++初心者必見！std::cinの使い方を5選で徹底解説
     https://jp-seemore.com/iot/23498/
+
+C++のstoi関数をマスター！完全解説と実践例5選
+    https://jp-seemore.com/iot/25647/#toc12
+
+C++で使えるバイナリファイルの読み書き9選
+    https://jp-seemore.com/iot/25376/
+
+【C++入門】string型⇔char*型に変換する方法まとめ
+    https://www.sejuku.net/blog/52403

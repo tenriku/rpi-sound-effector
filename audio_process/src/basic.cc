@@ -1,137 +1,87 @@
 #include "../include/basic.hh"
 
+using namespace std;
+
 Through::Through() {}
-void Through::set(const dsp_config *cfg, ...) {}
+void Through::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {}
 void Through::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
     y[t] = s[t];
 }
 
-DigitalDelay::DigitalDelay() {}
-void DigitalDelay::set(const dsp_config *cfg, ...) {
-    va_list ap;
-    va_start(ap, cfg);
-    this->L = va_arg(ap, int);
-    va_end(ap);
+DigitalDelay::DigitalDelay() : L(0) {}
+void DigitalDelay::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {
+    L = (int)(*it);
 }
 void DigitalDelay::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
-    if(this->is_enable) {
-        this->t_Delay = (t-this->L+cfg->MEM_SIZE)%cfg->MEM_SIZE;
-        y[t] = s[this->t_Delay];
+    if(is_enabled) {
+        t_Delay = (t-L+cfg->MEM_SIZE)%cfg->MEM_SIZE;
+        y[t] = s[t_Delay];
     } else {
         y[t] = s[t];
     }
 }
 
-Gain::Gain() {}
-void Gain::set(const dsp_config *cfg, ...) {
-    va_list ap;
-    va_start(ap, cfg);
-    this->value = va_arg(ap, double);
-    va_end(ap);
+Gain::Gain() : value(1.0) {}
+void Gain::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {
+    value = *it;
 }
 void Gain::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
-    if(is_enable) y[t] = this->value * s[t];
-    else          y[t] = s[t];
+    if(is_enabled) y[t] = value * s[t];
+    else           y[t] = s[t];
 }
 
-/*
 // 未実装
-class IRconvol : public DSP {
-public:
-    void set(const dsp_config &cfg, ...) override {}
+IRconvol::IRconvol() {}
+void IRconvol::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {}
+void IRconvol::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
+    y[t] = s[t];
+}
 
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        y[t] = s[t];
-    }
-};
 
-class ALLpass : public DSP {
-    float x, u0, u1, u2;
-    float a, r;
-    float fN;
+ALLpass::ALLpass() : u1(0), u2(0), a(0), r(1) {}
+void ALLpass::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {
+    r = *it;
+    fN = *(it+1);
 
-public:
-    ALLpass(const dsp_config &cfg, const float &r, const float &fn) {
-        set(cfg, r, fn);
-    }
-    
-    void set(const dsp_config &cfg, ...) override {
-        va_list ap;
-        va_start(ap, cfg);
-        r = va_arg(ap, double);
-        fN = va_arg(ap, double);
-        va_end(ap);
+    fN /= cfg->Fs;
+    a = -(1+r)*cos(2.0*M_PI*fN);
+}
+void ALLpass::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
+    u0 = s[t] - a * u1 - r * u2;
+    x = r * u0 + a * u1 + u2;
+    u2 = u1;
+    u1 = u0;
+    y[t] = x;
+}
 
-        fN /= cfg.Fs;
-        a = -(1+r)*cos(2.0*M_PI*fN);
-    }
+Notch::Notch() : u1(0), u2(0), a(0), r(1) {}
+void Notch::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {
+    r = *it;
+    fN = *(it+1);
 
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        u0 = s[t] - a * u1 - r * u2;
-        x = r * u0 + a * u1 + u2;
-        u2 = u1;
-        u1 = u0;
-        y[t] = x;
-    }
-};
+    fN /= cfg->Fs;
+    a = -(1+r)*cos(2.0*M_PI*fN);
+}
+void Notch::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
+    u0 = s[t] - a * u1 - r * u2;
+    x = r * u0 + a * u1 + u2;
+    y[t] = (s[t]+x)/2.0;
+    u2 = u1;
+    u1 = u0;
+}
 
-class Notch : public DSP {
-    float x, u0, u1, u2;
-    float a, r;
-    float fN;
+InvNotch::InvNotch() : u1(0), u2(0), a(0), r(-1) {}
+void InvNotch::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {
+    r = *it;
+    fN = *(it+1);
 
-public:
-    Notch(const dsp_config &cfg, const float &r, const float &fn) {
-        set(cfg, r, fn);
-    }
-    
-    void set(const dsp_config &cfg, ...) override {
-        va_list ap;
-        va_start(ap, cfg);
-        r = va_arg(ap, double);
-        fN = va_arg(ap, double);
-        va_end(ap);
-
-        fN /= cfg.Fs;
-        a = -(1+r)*cos(2.0*M_PI*fN);
-    }
-
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        u0 = s[t] - a * u1 - r * u2;
-        x = r * u0 + a * u1 + u2;
-        y[t] = (s[t]+x)/2.0;
-        u2 = u1;
-        u1 = u0;
-    }
-};
-
-class InvNotch : public DSP {
-    float x, u0, u1, u2;
-    float a, r;
-    float fN;
-
-public:
-    InvNotch(const dsp_config &cfg, const float &r, const float &fn) {
-        set(cfg, r, fn);
-    }
-    
-    void set(const dsp_config &cfg, ...) override {
-        va_list ap;
-        va_start(ap, cfg);
-        r = va_arg(ap, double);
-        fN = va_arg(ap, double);
-        va_end(ap);
-
-        fN /= cfg.Fs;
-        a = -(1+r)*cos(2.0*M_PI*fN);
-    }
-
-    void apply(const dsp_config &cfg, const unsigned &t, float *s, float *y) override {
-        u0 = s[t] - a * u1 - r * u2;
-        x = r * u0 + a * u1 + u2;
-        y[t] = (s[t]-x)/2.0;
-        u2 = u1;
-        u1 = u0;
-    }
-};
-*/
+    fN /= cfg->Fs;
+    a = -(1+r)*cos(2.0*M_PI*fN);
+}
+void InvNotch::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {
+    u0 = s[t] - a * u1 - r * u2;
+    x = r * u0 + a * u1 + u2;
+    y[t] = (s[t]-x)/2.0;
+    u2 = u1;
+    u1 = u0;
+}

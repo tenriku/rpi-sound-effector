@@ -57,10 +57,10 @@ RM = /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process
+CMAKE_SOURCE_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build
+CMAKE_BINARY_DIR = /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/src//CMakeFiles/progress.marks
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build/CMakeFiles 0
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/src//CMakeFiles/progress.marks
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/config.dir/rule:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/config.dir/rule
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/config.dir/rule
 .PHONY : src/CMakeFiles/config.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ config: src/CMakeFiles/config.dir/rule
 
 # fast build rule for target.
 config/fast:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/build
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/build
 .PHONY : config/fast
 
 basic.o: basic.cc.o
@@ -135,7 +135,7 @@ basic.o: basic.cc.o
 
 # target to build an object file
 basic.cc.o:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/basic.cc.o
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/basic.cc.o
 .PHONY : basic.cc.o
 
 basic.i: basic.cc.i
@@ -143,7 +143,7 @@ basic.i: basic.cc.i
 
 # target to preprocess a source file
 basic.cc.i:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/basic.cc.i
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/basic.cc.i
 .PHONY : basic.cc.i
 
 basic.s: basic.cc.s
@@ -151,7 +151,7 @@ basic.s: basic.cc.s
 
 # target to generate assembly for a file
 basic.cc.s:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/basic.cc.s
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/basic.cc.s
 .PHONY : basic.cc.s
 
 config.o: config.cc.o
@@ -159,7 +159,7 @@ config.o: config.cc.o
 
 # target to build an object file
 config.cc.o:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/config.cc.o
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/config.cc.o
 .PHONY : config.cc.o
 
 config.i: config.cc.i
@@ -167,7 +167,7 @@ config.i: config.cc.i
 
 # target to preprocess a source file
 config.cc.i:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/config.cc.i
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/config.cc.i
 .PHONY : config.cc.i
 
 config.s: config.cc.s
@@ -175,7 +175,7 @@ config.s: config.cc.s
 
 # target to generate assembly for a file
 config.cc.s:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/config.cc.s
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/config.dir/build.make src/CMakeFiles/config.dir/config.cc.s
 .PHONY : config.cc.s
 
 # Help Target
@@ -204,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/tenriku/Documents/GitHub/rpi-sound-effectorのコピー/audio_process/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

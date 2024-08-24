@@ -1,0 +1,9 @@
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/CMakeFiles/edit_cache.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/CMakeFiles/rebuild_cache.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/src/CMakeFiles/config.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/src/CMakeFiles/edit_cache.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/src/CMakeFiles/rebuild_cache.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/test/CMakeFiles/AudioProcess.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/test/CMakeFiles/SharedAudioProcess.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/test/CMakeFiles/edit_cache.dir
+/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/test/CMakeFiles/rebuild_cache.dir

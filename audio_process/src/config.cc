@@ -1,9 +1,10 @@
 #include "../include/config.hh"
 
-Effector::Effector() : is_enable(false) {}
-void Effector::enable() { this->is_enable = true; }
-void Effector::disable() { this->is_enable = false; }
-void Effector::set(const dsp_config *cfg, ...) {};
+using namespace std;
+
+Effector::Effector() : is_enabled(false) {}
+bool Effector::toggle() { return !is_enabled ? is_enabled = true : is_enabled = false; }  // Toggle is_enabled and return it.
+void Effector::set(const dsp_config *cfg, const std::vector<float>::iterator &it) {};
 void Effector::apply(const dsp_config *cfg, const unsigned &t, float *s, float *y) {};
 
 unsigned FFT::FFT_SIZE = 0;

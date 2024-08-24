@@ -3,24 +3,12 @@
 using namespace std;
 
 void dsp_loop() {
-    /* load config */
-    // ゆくゆくは保存用ファイルを作って、そこから各データのセットをする。
-    volume.set(&cfg, 1.0);
-    volume.enable();
+#ifdef RUN_BY_PYTHON
+    is_command_set = false;
+#endif
 
-    through.set(&cfg);
-    through.enable();
-    effectors.push_back(&through);
-
-    digital_delay.set(&cfg, 0);
-    digital_delay.enable();
-    effectors.push_back(&digital_delay);
-
-    gain.set(&cfg, 1.0);
-    gain.enable();
-    effectors.push_back(&gain);
-
-    cfg.MEM_SIZE = 400;
+    /* set dsp-configuration */
+    cfg.MEM_SIZE = 16000;
     cfg.Fs = 48000;
     cfg.BUF_SIZE = 160;
     cfg.FFT_SIZE = 64;
@@ -87,26 +75,26 @@ void dsp_loop() {
             t = (t+1) % cfg.MEM_SIZE;
             s[t] = in_buf[n];
             // s[t] += 0.1*sin(2*M_PI*1e3/cfg.Fs*t);
-            y[t] = s[t];
             
             /* voice processing */
             static size_t num_dsp = effectors.size();
-            if(num_dsp != 0 && num_dsp % 2 == 0) {
+            if(num_dsp == 0) {
+                y[t] = s[t];
+            } else if(num_dsp % 2 == 0) {
                 effectors.front()->apply(&cfg, t, s, y_tmp);
                 for(int i = 1; i < num_dsp - 1; i += 2) {
                     effectors.at(i)->apply(&cfg, t, y_tmp, y);
                     effectors.at(i+1)->apply(&cfg, t, y, y_tmp);
                 }
                 effectors.back()->apply(&cfg, t, y_tmp, y);
-            }
-            else if(num_dsp % 2 == 1) {
+            } else {
                 effectors.front()->apply(&cfg, t, s, y);
                 for(int i = 1; i < num_dsp; i += 2) {
                     effectors.at(i)->apply(&cfg, t, y, y_tmp);
                     effectors.at(i+1)->apply(&cfg, t, y_tmp, y);
                 }
             }
-            y[t] = atan(y[t])/(M_PI/2.0);
+            // y[t] = atan(y[t])/(M_PI/2.0);
             volume.apply(&cfg, t, y, y);
         }
 
@@ -167,52 +155,121 @@ error:
     exit(EXIT_FAILURE);
 }
 
+void control(Effector *effector, vector<string> &command_split) {
+    string effector_name = command_split.at(0);
+    string ope = command_split.at(1);
+    vector<float> args;
+    int err = 0;
+    
+    if(ope == "+") {                                                    // ADD
+        // unimplemented
+    } else if(ope == "-") {                                             // DELETE
+        //　unimplemented
+    } else if(ope == "*") {                                             // LIBRARY ( = exchange )
+        //　unimplemented
+    } else if(ope == "|") {                                             // toggle effector
+        effector->toggle();
+        cout << "\"" << effector_name << (effector->is_enabled ?  "\" is enabled." : "\" is disabled.") << endl;
+    } else if(ope == "^") {                                             // set effector
+        command_split.erase(command_split.begin(), command_split.begin() + 2);
+        for(const string &v : command_split) {
+            try {
+                args.emplace_back(stof(v));
+            } catch(const invalid_argument &e) {
+                cout << "ERROR: An argument is invalid. " << e.what() << endl;
+                err = -1;
+            } catch(const out_of_range &e) {
+                cout << "ERROR: An argument is out of range. " << e.what() << endl;
+                err = -1;
+            } 
+        }
+        if(!err) {
+            effector->set(&cfg, args.begin());
+            cout << "\"" << effector_name << "\" is newly set." << endl;
+        }
+    } else {
+        cout << "ERROR: Invalid operator." << endl;
+    }
+    cin.clear();
+    command_split.clear();
+}
+
+ /* dsp is contorolled via terminal. */
 int main() {
+
+#ifdef RUN_BY_PYTHON
+    is_command_set = false;
+#endif
+
+    // ゆくゆくは保存用ファイルを作って、そこから各データのセットをする。
+    // terminalからの方が簡単だし、Python側からやろっか
+    volume.toggle();
+    // through.toggle(); effectors.push_back(&through);
+    // digital_delay.toggle(); effectors.push_back(&digital_delay);
+    gain.toggle();  effectors.emplace_back(&gain);
+    // irconvol.toggle(); effectors.push_back(&irconvol);
+    // allpass.toggle(); effectors.push_back(&allpass);
+    // notch.toggle(); effectors.push_back(&notch);
+    // inv_notch.toggle(); effectors.push_back(&inv_notch);
+
     thread th(dsp_loop);
 
-    while(!processing);     // wait until processing is triggerd.
+    ////////////////////////////////////////
+    //                                    //
+    //        [format of comannd]         //
+    //                                    //
+    //          ex) Gain,^,10,0           //
+    //               |   |   |            //
+    //              /    |    \           // 
+    //   Effector_name   |   aruguments   //
+    //                operator            //
+    //                                    //
+    ////////////////////////////////////////
+
+    while(!processing);             // wait until processing is triggerd.
     while(processing) {
-        static string cmd, effector_name;
+        static vector<string> cmd_split;
 
-        cout << "cmmand here: ";
+#ifdef RUN_BY_PYTHON
+        while(!is_command_set);     // wait until is_command_set is triggerd.
+        is_command_set = false;
+#else
+        cout << endl << "command here: ";
         getline(cin, cmd);
-
+#endif
         stringstream ss(cmd);
-        getline(ss, effector_name, ',');
-
-    if(tag == "FIN") {
-        cin.clear();
-        processing = false;
-    } else if(tag == "A00") {
-        if(ope == "+") {
-            through.enable();
-            cout << "through is enabled." << endl;
-        } else if(ope == "-") {
-            through.disable();
-            cout << "through is disabled." << endl;
-        } else {
-            through.set(cfg);
-            cout << "through is newly set." << endl;
-        } cin.clear();
-    } else if(tag == "A01") {
-        if(ope == "+") {
-            digital_delay.enable();
-            cout << "digital_delay is enabled." << endl;
-        } else if(ope == "-") {
-            digital_delay.disable();
-            cout << "digital_delay is disabled." << endl;
-        } else {
-            int argc = stoi(ope);
-            digital_delay.set(cfg);
-            cout << "digital_delay is newly set." << endl;
-        } cin.clear();
-    } else if(tag == "A02") {
-        //
-    } else {
-        cin.clear();   
-        cout << "ERROR: no effector tagged \"" << tag  << "\"." << endl;
+        string item;
+        while(getline(ss, item, ',')) cmd_split.emplace_back(item);
+        // for(auto v : cmd_split) cout << v << endl;
+        
+        string name = cmd_split.front();
+        if(name == "FIN") {
+            cin.clear();
+            cmd_split.clear();
+            processing = false;
+        }
+        else if(name == "Volume")           control(&volume, cmd_split);
+        else if(name == "Through")          control(&through, cmd_split);
+        else if(name == "DigitalDelay")     control(&digital_delay, cmd_split);
+        else if(name == "Gain")             control(&gain, cmd_split);
+        else if(name == "IRconvol")         control(&irconvol, cmd_split);
+        else if(name == "ALLpass")          control(&allpass, cmd_split);
+        else if(name == "Notch")            control(&notch, cmd_split);
+        else if(name == "InvNotch")         control(&inv_notch, cmd_split);
+        else {
+            cin.clear();
+            cmd_split.clear();
+            cout << "ERROR: No effector named \"" << name << "\"." << endl;
+        }
     }
-    }
-
     th.join();
 }
+
+#ifdef RUN_BY_PYTHON
+
+void set_command(const char *command) {
+    cmd = command;
+    is_command_set = true;
+}
+
+#endif

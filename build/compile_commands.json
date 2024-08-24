@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/src",
+  "command": "/usr/bin/g++ -Dconfig_EXPORTS -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fPIC -o CMakeFiles/config.dir/config.cc.o -c /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/config.cc",
+  "file": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/config.cc",
+  "output": "src/CMakeFiles/config.dir/config.cc.o"
+},
+{
+  "directory": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/src",
+  "command": "/usr/bin/g++ -Dconfig_EXPORTS -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fPIC -o CMakeFiles/config.dir/basic.cc.o -c /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/basic.cc",
+  "file": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/src/basic.cc",
+  "output": "src/CMakeFiles/config.dir/basic.cc.o"
+},
+{
+  "directory": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/test",
+  "command": "/usr/bin/g++  -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.hh -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/include -isystem /usr/local/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks  -o CMakeFiles/AudioProcess.dir/main.cc.o -c /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc",
+  "file": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc",
+  "output": "test/CMakeFiles/AudioProcess.dir/main.cc.o"
+},
+{
+  "directory": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/build/test",
+  "command": "/usr/bin/g++ -DSharedAudioProcess_EXPORTS -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.hh -I/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/include -isystem /usr/local/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fPIC -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks  -o CMakeFiles/SharedAudioProcess.dir/main.cc.o -c /Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc",
+  "file": "/Users/tenriku/Documents/GitHub/rpi-sound-effector/audio_process/test/main.cc",
+  "output": "test/CMakeFiles/SharedAudioProcess.dir/main.cc.o"
+}
+]
